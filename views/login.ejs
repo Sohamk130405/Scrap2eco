@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Page</title>
+    <link rel="stylesheet" href="/login.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="tabs">
+        <div class="tab"  id="loginTab" style="background-color: #4caf50;">Login</div>
+        <div class="tab"  id="signupTab" onclick="location.href='/signup'">Sign Up</div>
+    </div>
+   
+    <div class="form" id="loginForm">
+        <h2>Login</h2>
+        <form action="/user" method="post">
+            <div class="input-group">
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" required>
+            </div>
+            <div class="input-group">
+                <input type="submit" value="Login">
+            </div>
+            <p>Not have an account?<a href="/signup">SignUp</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
