@@ -1,7 +1,7 @@
 const mongoose = require("mongoose"); //to connect db with backend
-const express = require("express"); 
-const session = require("express-session");// to run backend server
-const path = require("path"); 
+const express = require("express");
+const session = require("express-session"); // to run backend server
+const path = require("path");
 const app = express();
 const port = 8080;
 const User = require("./models/user.js");
@@ -20,7 +20,9 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/scrap2eco");
+  await mongoose.connect(
+    "mongodb+srv://chavanayushp:NmkCB09XArizSzdA@blogify.q7px2.mongodb.net/?retryWrites=true&w=majority&appName=Blogify"
+  );
 }
 
 app.listen(port, () => {
@@ -176,8 +178,8 @@ app.get("/user", async (req, res) => {
 // edit route
 app.get("/edit", async (req, res) => {
   try {
-    const { _id, username, name ,idx } = req.query;
-    
+    const { _id, username, name, idx } = req.query;
+
     // Fetch the user details by username
     const scraps = await Scrap.findOne({ username });
     const scrap = scraps.scrap[idx];
@@ -187,19 +189,18 @@ app.get("/edit", async (req, res) => {
       return res.status(404).json({ message: "Scrap record not found." });
     }
 
-
     // Render the edit view with the user details
-    res.render("edit", { _id, name, username, scrap , idx });
+    res.render("edit", { _id, name, username, scrap, idx });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error." });
   }
 });
 
-
 app.patch("/edit", async (req, res) => {
   try {
-    const { _id, name, username, type, locality, city, price, quantity, idx } = req.body;
+    const { _id, name, username, type, locality, city, price, quantity, idx } =
+      req.body;
 
     const update = await Scrap.findOneAndUpdate(
       { username },
@@ -228,8 +229,6 @@ app.patch("/edit", async (req, res) => {
   }
 });
 
-
-
 app.delete("/delete", async (req, res) => {
   try {
     const { id: _id, name, username } = req.body;
@@ -253,7 +252,6 @@ app.delete("/delete", async (req, res) => {
   }
 });
 
-
 // Contact route
 app.post("/contact", async (req, res) => {
   try {
@@ -265,16 +263,15 @@ app.post("/contact", async (req, res) => {
     // Find the scrap collection by username
     const scrapCollection = await Scrap.findOne({ username });
     let scrap;
-    for( let i = 0 ; i<scrapCollection.scrap.length ; i++){
-      if( scrapCollection.scrap[i]._id == _id){
-       scrap = scrapCollection.scrap[i];
+    for (let i = 0; i < scrapCollection.scrap.length; i++) {
+      if (scrapCollection.scrap[i]._id == _id) {
+        scrap = scrapCollection.scrap[i];
       }
     }
 
-    res.render("contact", { scrap , scrapCollection , user});
+    res.render("contact", { scrap, scrapCollection, user });
     console.log(scrap);
     // console.log(scrapCollection);
-
   } catch (error) {
     // Handle errors
     console.error("Error in contact route:", error);
