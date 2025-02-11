@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    
+    <!-- Add your stylesheets or styling here -->
+    <style>
+        /* Header Styles */
+        header {
+            padding: 30px;
+            text-align: center;
+            background-color: darkcyan;
+            color: #edf1f2;
+            background-attachment: fixed;
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+        }
+
+        .nav-opt {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .nav-opt a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1vw 2vw;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-opt a:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 390px) {
+            nav {
+                flex-direction: column;
+            }
+        }
+
+        /* Add your global styles here */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            height: 100vh; /* Set the height to 100% of the viewport height */
+        }
+
+        .left-side, .right-side {
+            width: 48%;
+            box-sizing: border-box;
+        }
+
+        .left-side {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-side {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 100%; /* Set the height to 100% of the parent container */
+            overflow-y: auto; /* Enable vertical scrolling if content overflows */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .scrap-details-card, .scrap-collection-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .scrap-details-card h3, .scrap-collection-card h3 {
+            color: #4e92b5;
+        }
+
+        /* Add more specific styles as needed */
+
+        /* Media query for responsiveness */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-side, .right-side {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Scrap2eco</h1>
+        <h3>Vendor Details <%= user.name %></h3>
+    </header>
+
+    <nav>
+        <div class="nav-opt">
+            <a class="menu-btn" href="/home">Home</a>
+            <a class="menu-btn" href="#">FAQ</a>
+            <a class="menu-btn" href="#">About us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="left-side">
+            <h2><%= user.name %></h2>
+            <p>Phone: <%= user.phone %></p>
+            
+            <div class="scrap-details-card">
+                <h3>Scrap Details</h3>
+                <p>Scrap Name: <%= scrap.name %></p>
+                <p>Quantity: <%= scrap.quantity %></p>
+                <p>Price: Rs <%= scrap.price %></p>
+                <p>Type: <%= scrap.type %></p>
+                <p>Address: <%= scrap.locality %>,<%= scrap.city %></p>
+                <!-- Add more details as needed -->
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <h2>Scrap Collection By Same Vendor</h2>
+
+            <% if (scrapCollection && scrapCollection.scrap && scrapCollection.scrap.length > 0) { %>
+                <% scrapCollection.scrap.forEach(scrapItem => { %>
+                    <div class="scrap-collection-card">
+                        <h3><%= scrapItem.name %></h3>
+                        <p>Quantity: <%= scrapItem.quantity %></p>
+                        <p>Type: <%= scrapItem.type %></p>
+                        <p>Price: Rs <%= scrapItem.price %></p>
+                        
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No scrap collection found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

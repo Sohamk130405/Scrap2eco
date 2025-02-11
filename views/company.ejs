@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrap2eco : Company</title>
+    <link rel="stylesheet" href="/demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Scrap2eco</h1>
+      <h3>Welcome <%= user.name %></h3>
+    </header>
+
+    <nav>
+      <div class="nav-opt">
+        <a class="menu-btn" href="/home">Home</a>
+        <a class="menu-btn" href="#">FAQ</a>
+        <a class="menu-btn" href="#">About us</a>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="company-container">
+        <div class="view-records">
+          <div class="view">
+            <% if (scrapCollection && scrapCollection.length > 0) { %> <%
+            scrapCollection.forEach(user => { %> <% if (user.scrap &&
+            user.scrap.length > 0) { %> <% user.scrap.forEach(scrapObject => { %>
+            <div class="view-groups">
+              <h3><%= scrapObject.name %></h3>
+              <div class="scrap-details">
+                <p>Quantity: <%= scrapObject.quantity %></p>
+                <p>Type: <%= scrapObject.type %></p>
+                <p>
+                  Locality: <%= scrapObject.locality %>, <%= scrapObject.city %>
+                </p>
+                <p>Price: <%= scrapObject.price %> Rs</p>
+              </div>
+              <form action="/contact" method="post">
+                 <input type="hidden" name="username" value="<%= user.username %>">
+                 <input type="hidden" name="_id" value="<%= scrapObject._id %>">
+                <button class="scrap-btn" type="submit">Contact Us</button>
+                </form>
+            </div>
+            <% }); %>    
+        <% }}); } else { %>
+            <p>No scrap records found .</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

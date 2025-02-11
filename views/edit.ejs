@@ -1,0 +1,71 @@
+<!-- edit.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Scrap Record</title>
+    <link rel="stylesheet" href="/demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Scrap2eco</h1>
+      <h3>Edit Scrap Record</h3>
+    </header>
+
+    <nav>
+      <div class="nav-opt">
+        <a class="menu-btn" href="/home">Home</a>
+        <a class="menu-btn" href="#">FAQ</a>
+        <a class="menu-btn" href="#">About us</a>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="scrap-input">
+        <form action="/edit?_method=PATCH" method="post">
+          <h2>Edit Scrap Details</h2>
+          <div class="scrap-in">
+            <div class="input">
+              <label for="scrapName">Scrap Name</label>
+              <input type="text" id="scrapName" name="name" value="<%= scrap.name %>" required />
+            </div>
+            <div class="input">
+              <label for="scrapType">
+                Type Of Scrap
+                <select id="scrapType" name="type">
+                  <option value="plastic" <%= scrap.type === 'plastic' ? 'selected' : '' %>>Plastic</option>
+                  <option value="paper" <%= scrap.type === 'paper' ? 'selected' : '' %>>Paper</option>
+                  <option value="metal" <%= scrap.type === 'metal' ? 'selected' : '' %>>Metal</option>
+                  <option value="electronic" <%= scrap.type === 'electronic' ? 'selected' : '' %>>Electronic Waste</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="input">
+              <label for="scrapLocality">Locality</label>
+              <input type="text" id="scrapLocality" name="locality" value="<%= scrap.locality %>" required />
+            </div>
+            <div class="input">
+              <label for="scrapCity">City</label>
+              <input type="text" id="scrapCity" name="city" value="<%= scrap.city %>" required />
+            </div>
+            <div class="input">
+              <label for="scrapPrice">Price (in Rupees)</label>
+              <input type="number" id="scrapPrice" name="price" value="<%= scrap.price %>" required />
+            </div>
+            <div class="input">
+              <label for="scrapQuantity">Quantity</label>
+              <input type="text" id="scrapQuantity" name="quantity" value="<%= scrap.quantity %>" required />
+              <p>[Note:- Enter its unit Ex:- KG, Gram, Units, etc]</p>
+            </div>
+          </div>
+          <input type="hidden" value="<%= _id %>" name="_id" />
+          <input type="hidden" value="<%= idx %>" name="idx" />
+          <input type="hidden" value="<%= username %>" name="username" />
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

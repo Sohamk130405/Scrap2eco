@@ -1,0 +1,316 @@
+/* Reset and Global Styles */
+* {
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Header Styles */
+header {
+    padding: 30px;
+    text-align: center;
+    background-color: darkcyan;
+    color: #edf1f2;
+    background-attachment: fixed;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+}
+
+.nav-opt {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav-opt a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1vw 2vw;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-opt a:hover {
+    background-color: #555;
+}
+
+@media screen and (max-width: 390px) {
+    nav {
+        flex-direction: column;
+    }
+}
+
+/* Main Content Styles */
+.main {
+    background-color: #f5f5f5;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.heading {
+    text-align: center;
+    padding: 1vw;
+}
+
+/* Scrap Dashboard Styles */
+.scrap {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.scrap-in {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+.scrap-input, .scrap-record {
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.scrap-input h2, .scrap-record h2 {
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.scrap-input h2::before, .scrap-record h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+/* Scrap Details Insertion */
+.scrap-in {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scrap-in .input {
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 20px;
+}
+
+.scrap-in .input label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.scrap-in .input input,
+.scrap-in .input select {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all ease 0.3s;
+}
+
+.scrap-in .input input:focus,
+.scrap-in .input select:focus {
+    border-color: #71b7e6;
+}
+
+form button {
+    display: block;
+    align-self: center;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    background-color: #71b7e6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+
+form button:hover {
+    background-color: #4e92b5;
+}
+
+/* Scrap Records Styles */
+.scrap-record .records {
+    display: flex;
+    padding: 20px;
+    max-height: 500px;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    position: relative;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.records .record-groups {
+    display: flex;
+    padding: 10px;
+    width: 230px;
+    height: 300px;
+    border: 1px solid #ccc;
+    position: relative;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.scrap-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.records .button {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button form {
+    width: 100%;
+}
+
+.record-groups .scrap-btn {
+    margin: 5px;
+    outline: none;
+    height: 30px;
+    width: 90%;
+    background-color: #71b7e6;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+
+.record-groups .scrap-btn:hover {
+    background-color: #4e92b5;
+}
+
+/* Existing styles ... */
+
+/* Company Page Styles */
+.company-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 50px; /* Increased padding */
+    background-color: #f5f5f5; /* Light background color */
+}
+
+.view-records {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.view {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.view-groups {
+    box-sizing: border-box;
+    padding: 20px;
+    width: calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    background-color: #fff; /* White background */
+}
+
+.view-groups h3 {
+    font-size: 24px;
+    margin-bottom: 15px; 
+}
+
+.scrap-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.scrap-btn {
+    margin-top: 20px;
+    background-color: #71b7e6;
+    color: #fff;
+    font-size: 18px; 
+    font-weight: 500;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.scrap-btn:hover {
+    background-color: #4e92b5;
+    border-color: #333;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 1200px) {
+    .view-groups {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .view-records {
+        width: 100%;
+    }
+
+    .view-groups {
+        width: calc(100% - 20px);
+    }
+}

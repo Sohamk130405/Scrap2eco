@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrap2eco | Home</title>
+    <link rel="stylesheet" href="/demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Scrap2eco</h1>
+      <h3>Welcome <%= user.name %></h3>
+    </header>
+
+    <nav>
+      <div class="nav-opt">
+        <a class="menu-btn" href="/home">Home</a>
+        <a class="menu-btn" href="#">FAQ</a>
+        <a class="menu-btn" href="#">About us</a>
+      </div>
+    </nav>
+    <div class="main">
+      <h2 class="heading">Scrap Dashboard</h2>
+      <div class="scrap">
+        <div class="scrap-input">
+          <form action="/addScrap" method="post">
+            <h2>Enter Scrap Details</h2>
+            <div class="scrap-in">
+              <div class="input">
+                <label for="scrapName">Scrap Name</label>
+                <input type="text" id="scrapName" name="name" required />
+              </div>
+              <div class="input">
+                <label for="scrapType">
+                  Type Of Scrap
+                  <select id="scrapType" name="type">
+                    <option value="plastic">Plastic</option>
+                    <option value="paper">Paper</option>
+                    <option value="metal">Metal</option>
+                    <option value="electronic">Electronic Waste</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="input">
+                <label for="scrapLocality">Locality</label>
+                <input
+                  type="text"
+                  id="scrapLocality"
+                  name="locality"
+                  required
+                />
+              </div>
+              <div class="input">
+                <label for="scrapCity">City</label>
+                <input type="text" id="scrapCity" name="city" required />
+              </div>
+              <div class="input">
+                <label for="scrapPrice">Price (in Rupees)</label>
+                <input type="number" id="scrapPrice" name="price" required />
+              </div>
+              <div class="input">
+                <label for="scrapQuantity">Quantity</label>
+                <input
+                  type="text"
+                  id="scrapQuantity"
+                  name="quantity"
+                  required
+                />
+                <p>[Note:- Enter its unit Ex:- KG,Gram,Units,etc]</p>
+              </div>
+            </div>
+            <input type="hidden" value="<%= user.username %>" name="username" />
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <div class="scrap-record">
+          <h2>Scrap Records</h2>
+          <div class="records">
+            <% if (scrap && scrap.scrap && scrap.scrap.length > 0) { %> <% for
+            (let i = 0; i < scrap.scrap.length; i++) { %>
+            <div class="record-groups">
+              <h3><%=scrap.scrap[i].name %></h3>
+              <div class="scrap-details">
+                <p>Quantity: <%=scrap.scrap[i].quantity %></p>
+                <p>Type: <%=scrap.scrap[i].type %></p>
+                <p>
+                  Locality: <%=scrap.scrap[i].locality %>,
+                  <%=scrap.scrap[i].city %>
+                </p>
+                <p>Price: <%=scrap.scrap[i].price %> Rs</p>
+              </div> 
+              <div class="button">
+                <form action="/edit" method="get">
+                  <input type="hidden"name="_id" value="<%=scrap._id %>">
+                  <input type="hidden" name="username" value="<%=scrap.username %>">
+                  <input type="hidden" name="idx" value="<%= i %>">
+        
+                  <button class="scrap-btn" type="submit">Edit</button>
+                </form>
+                <form action="/delete?_method=DELETE" method="post">
+                  <input type="hidden" name="id" value="<%=scrap.scrap[i]._id %>">
+                  <input type="hidden" name="username" value="<%=scrap.username %>">
+                  <input type="hidden" name="name" value="<%=scrap.scrap[i].name %>">
+                  <button class="scrap-btn" type="submit" style="background-color: #333">
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% } %> <% } else { %>
+            <p>No scrap records found.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

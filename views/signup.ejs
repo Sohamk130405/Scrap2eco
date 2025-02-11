@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab"  id="loginTab" onclick="location.href='/login'" >Login</div>
+            <div class="tab"  id="signupTab" style="background-color: #4caf50;">Sign Up</div>
+        </div>
+        <div class="form" id="signupForm" >
+            <h2>Sign Up</h2>
+            <form action="/signup" method="post">
+                <div class="input-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="text" id="signupPhone" name="phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" required>
+                </div>
+                <div class="dropdown">
+                <label for="business"> Select your business
+                    <Select id="business" name="type">
+                        <option value="vendor">Local scrap vendors</option>
+                        <option value="company">Recycling companies</option>
+                    </Select>
+                </label>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="submit" value="Sign Up">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
